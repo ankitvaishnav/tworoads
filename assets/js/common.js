@@ -27,7 +27,7 @@ var common = {
         }
       }else{
         $.post(common.url+'auth',{},function(data,status,xhr){
-          common.utoken = xhr.getResponseHeader("utoken");
+          common.utoken = data;
           localStorage.utoken = common.utoken;
         });
       }

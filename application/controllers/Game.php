@@ -172,10 +172,10 @@ class Game extends CI_Controller {
     if(empty($_COOKIE["utoken"])){
       $cookie_value = $this->uuid();
       $this->utoken = $cookie_value;
-      $this->setHeader('Cool');
+      $this->setHeader($this->utoken);
     }else{
       $this->utoken = $_COOKIE["utoken"];
-      $this->setHeader('not Cool');
+      $this->setHeader($this->utoken);
     }
   }
 
