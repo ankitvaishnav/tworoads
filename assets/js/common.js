@@ -52,7 +52,7 @@ var common = {
             common.gameId = gameId;
             common.info();
           }else{
-            common.showAlerts('warning', data);
+            common.showAlerts('warning', data.msg);
           }
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -76,7 +76,7 @@ var common = {
           common.saveGameId(data.gameId);
           common.info();
         }else{
-          common.showAlerts('warning', data);
+          common.showAlerts('warning', data.msg);
         }
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -113,10 +113,10 @@ var common = {
       data: object,
       success: function(data,status,xhr){
         if(data && xhr.status==200){
-          common.showAlerts('success', data);
+          common.showAlerts('success', data.msg);
           common.info();
         }else{
-          common.showAlerts('warning', data);
+          common.showAlerts('warning', data.msg);
         }
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -146,10 +146,10 @@ var common = {
       data: object,
       success: function(data,status,xhr){
         if(data && xhr.status==200){
-          common.showAlerts('success', data);
+          common.showAlerts('success', data.msg);
           common.info();
         }else{
-          common.showAlerts('warning', data);
+          common.showAlerts('warning', data.msg);
           common.info();
         }
       },

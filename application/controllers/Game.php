@@ -27,7 +27,7 @@ class Game extends CI_Controller {
 			$matrix = $game['matrix'];
 			$info = $game['info'];
 			$this->setRedis_create($gameId, $utoken, $nick, $matrix, $words, $info);
-	    $this->setHeader(['gameId'=>$gameId, 'utoken'=>$utoken, 'nick'=>$nick, 'matrix'=>$matrix, 'admin'=>$utoken]);
+	    $this->setHeader(['gameId'=>$gameId, 'utoken'=>$utoken, 'nick'=>$nick]);
 		}else{
 			$this->setHeader($game, 400);
 		}
@@ -40,26 +40,26 @@ class Game extends CI_Controller {
 		$nick = $this->input->post('nick');
 		$game = $this->setRedis_info($gameId);
 		if(empty($game)){
-			$this->setHeader('Invalid game id!', 400);
+			$this->setHeader(['registered'=>0, 'player_id'=>$utoken, 'nick'=>$nick, 'msg'=>'Invalid game id!'], 202);
 		}else{
 			$matrix = $game['matrix'];
 			$admin = $game['admin'];
 
 			if(!in_array($utoken, $game['players'])){
 				if(count($game['players']) > 5){
-					$this->setHeader('Game is full!', 202);
+					$this->setHeader(['registered'=>0, 'player_id'=>$utoken, 'nick'=>$nick, 'msg'=>'Game is full!'], 202);
 				}
 				if(in_array($game['status'], ['inPlay', 'completed'])){
-					$this->setHeader('Cannot join...Game status: '.$game['status'].'!', 202);
+					$this->setHeader(['registered'=>0, 'player_id'=>$utoken, 'nick'=>$nick, 'msg'=>'Cannot join...Game status: '.$game['status'].'!'], 202);
 				}
 				array_push($game['players'], $utoken);
 				array_push($game['turn_seq'], $utoken);
 				$game['scores'][$utoken] = 0;
 				$game['players_nick'][$utoken] = $nick;
 				$this->setRedis_set($gameId, $game);
-				$this->setHeader('Succesfully joined the game!');
+				$this->setHeader(['registered'=>1, 'player_id'=>$utoken, 'nick'=>$nick, 'msg'=>'Succesfully joined the game!'], 200);
 			}else{
-				$this->setHeader('Succesfully joined the game!');
+				$this->setHeader(['registered'=>1, 'player_id'=>$utoken, 'nick'=>$nick, 'msg'=>'Succesfully joined the game!'], 200);
 			}
 		}
 
@@ -75,9 +75,9 @@ class Game extends CI_Controller {
 			}
 			$game['status'] = "inPlay";
 			$this->setRedis_set($gameId, $game);
-			$this->setHeader('Game has been started successfully!', 200);
+			$this->setHeader(['success'=>1, 'msg'=>'Game has been started successfully!'], 200);
 		}else{
-			$this->setHeader('You are not admin of this game!', 202);
+			$this->setHeader(['success'=>0, 'msg'=>'You are not admin of this game!'], 202);
 		}
   }
 
@@ -87,21 +87,21 @@ class Game extends CI_Controller {
 		$word = $this->input->post('word');
 		$game = $this->setRedis_info($gameId);
 		if(!in_array($utoken, $game['players'])){
-			$this->setHeader('You are not a player in this game or game session expired!', 400);
+			$this->setHeader(['success'=>0, 'msg'=>'You are not a player in this game or game session expired!'], 202);
 		}
 		if($game['status'] == 'waiting'){
-			$this->setHeader('Wait for game to begin...Hold tight!', 202);
+			$this->setHeader(['success'=>0, 'msg'=>'Wait for game to begin...Hold tight!'], 202);
 		}
 		if($game['status'] == 'completed'){
-			$this->setHeader('Game has been completed!', 202);
+			$this->setHeader(['success'=>0, 'msg'=>'Game has been completed!'], 202);
 		}
 		if($utoken != $game['current_player']){
-			$this->setHeader('Wait for your turn!', 202);
+			$this->setHeader(['success'=>0, 'msg'=>'Wait for your turn!'], 202);
 		}
 		if($word=='#'){
 			$game = $this->nextPlayer($game, $utoken);
 			$this->setRedis_set($gameId, $game);
-			$this->setHeader('You have passed your chance!', 202);
+			$this->setHeader(['success'=>0, 'msg'=>'You have passed your chance!'], 202);
 		}else{
 			$obj  = new algo();
 			$result = $obj->checkWord($game, $word, $utoken);
@@ -110,11 +110,11 @@ class Game extends CI_Controller {
 				$game = $this->nextPlayer($game, $utoken);
 				$game = $this->gameStatus($game);
 				$this->setRedis_set($gameId, $game);
-				$this->setHeader('Congratulations...Successfully matched the word!', 200);
+				$this->setHeader(['success'=>1, 'msg'=>'Congratulations...Successfully matched the word!'], 200);
 			}else{
 				$game = $this->nextPlayer($game, $utoken);
 				$this->setRedis_set($gameId, $game);
-				$this->setHeader($result['msg'], 202);
+				$this->setHeader(['success'=>0, 'msg'=>$result['msg']], 202);
 			}
 		}
   }
