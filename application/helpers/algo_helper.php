@@ -2,6 +2,13 @@
 
 class algo {
 
+  /**
+   * [assign_rand_value description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * generates a random alphabet from random number
+   * @param  [int] $num [description]
+   * @return [string]      [description]
+   */
   public function assign_rand_value($num) {
     // accepts 1 - 36
     switch($num) {
@@ -35,6 +42,12 @@ class algo {
     return $rand_value;
   }
 
+  /**
+   * [wordEngine description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * a wrapper function over the micro function that select words, build grid
+   * @return [array] [description]
+   */
   public function wordEngine(){
     $getSomeWords = $this->getSomeWords();
     if(!$getSomeWords['status']){
@@ -47,6 +60,13 @@ class algo {
     return ['status'=>1, 'words'=>$words, 'matrix'=>$matrix, 'info'=>$info];
   }
 
+  /**
+   * [matrixMaker description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * makes the grid
+   * @param  [array] $words [description]
+   * @return [array]        [description]
+   */
   public function matrixMaker($words){
     $matrix = [];
     $info = [];
@@ -69,6 +89,14 @@ class algo {
     return ['matrix'=>$matrix, 'info'=>$info];
   }
 
+  /**
+   * [hMaker description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * randomly assignes grid orientation (h,v,d) to the word
+   * @param  [array] $matrix [description]
+   * @param  [string] $word   [description]
+   * @return [array]         [description]
+   */
   public function hMaker($matrix, $word){
     $characters = str_split($word);
     $length = strlen($word);
@@ -153,6 +181,12 @@ class algo {
 
   }
 
+  /**
+   * [getSomeWords description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * selects 10 words from the dictionary
+   * @return [array] [description]
+   */
   public function getSomeWords(){
     $finalWords = [];
     $full = $this->getAllWords();
@@ -177,6 +211,12 @@ class algo {
     }
   }
 
+  /**
+   * [getAllWords description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * read a .dic file
+   * @return [array] [description]
+   */
   public function getAllWords(){
     $handle = fopen("assets/en-US.dic", "r");
     $words = [];
@@ -197,6 +237,15 @@ class algo {
     }
   }
 
+/**
+ * [checkWord description]
+ * written by Ankit Vaishnav on 2016-10-12
+ * checks a word with words_found, dictionary
+ * @param  [array] $game   [description]
+ * @param  [string] $word   [description]
+ * @param  [string] $utoken [player_id]
+ * @return [array]         [description]
+ */
   public function checkWord($game, $word, $utoken){
 		$word = strtolower($word);
 		if(in_array($word, $game['words_found'])){

@@ -8,6 +8,12 @@ var common = {
 
   url: 'http://loc.netsberg.com/index.php/',
 
+  /**
+   * [saveGameId description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * core function that save gameId into the localStorage
+   * @param  {[string]} gameId [description]
+   */
   saveGameId:function(gameId){
     if (typeof(Storage) !== "undefined") {
       common.gameId = gameId;
@@ -17,6 +23,11 @@ var common = {
     }
   },
 
+  /**
+   * [getLogin description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * check the user already has unique identifier (player_id), if not the get one from server and save in localStorage
+   */
   getLogin:function(){
     if (typeof(Storage) !== "undefined") {
       if(localStorage.utoken && localStorage.utoken !== 'undefined' && localStorage.utoken !== 'null'){
@@ -38,6 +49,11 @@ var common = {
 
   },
 
+  /**
+   * [join description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * send ajax post request to join the game
+   */
   join:function(){
     var gameId = $('#gameId').val();
     var nick = $('#j_nick').val();
@@ -64,6 +80,11 @@ var common = {
     }
   },
 
+  /**
+   * [create description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * sends ajax post request to create a game
+   */
   create:function(){
     var nick = $('#nick').val();
     var object = {'utoken':common.utoken, 'nick':nick};
@@ -85,6 +106,11 @@ var common = {
     });
   },
 
+  /**
+   * [info description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * sends ajax post request to get the information related to the game
+   */
   info:function(){
     var object = {'utoken':common.utoken, 'gameId':common.gameId};
     $.ajax({
@@ -105,6 +131,11 @@ var common = {
     });
   },
 
+  /**
+   * [start description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * send ajax post request to start a game
+   */
   start:function(){
     var object = {'utoken':common.utoken, 'gameId':common.gameId};
     $.ajax({
@@ -125,10 +156,21 @@ var common = {
     });
   },
 
+  /**
+   * [pass description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * function to serve pass button event
+   */
   pass:function(){
     common.submitWord(1);
   },
 
+  /**
+   * [submitWord description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * sends ajax post request to check the word entered by player
+   * @param  {[boolean]} par [to differentiate pass chance]
+   */
   submitWord:function(par){
     var word = $('#word').val();
     if(par==1){
@@ -159,6 +201,12 @@ var common = {
     });
   },
 
+  /**
+   * [gridMaker description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * makes a grid in UI on the basis of alphabets grid coordinates. Additional it add control buttons like refresh, start game etc
+   * @param  {[object]} data [description]
+   */
   gridMaker:function(data){
     var matrix = data.matrix;
     var innerHTML = '<tbody style="box-shadow: 0px 0px 5px #888888;">';
@@ -201,6 +249,12 @@ var common = {
     }
   },
 
+  /**
+   * [infoEditor description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * updates the game related information on the click on refesh button
+   * @param  {[type]} data [description]
+   */
   infoEditor:function(data){
     var innerHTML = '';
     if(data.game_status){
@@ -226,6 +280,13 @@ var common = {
     $('#info-bar').html(innerHTML);
   },
 
+  /**
+   * [showAlerts description]
+   * written by Ankit Vaishnav on 2016-10-12
+   * show alerts for specific time in the UI
+   * @param  {[string]} type [description]
+   * @param  {[string]} body [description]
+   */
   showAlerts:function(type, body){
     if(type=='success'){
       $('.super-success h4').html(body);

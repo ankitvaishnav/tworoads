@@ -16,6 +16,12 @@ class Game extends CI_Controller {
  		$this->load->view('basic');
  	}
 
+	/**
+	 * [create description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * creates the game
+	 * @return void
+	 */
 	public function create(){
     $gameId = $this->uuid();
     $utoken = $this->input->post('utoken');
@@ -33,6 +39,12 @@ class Game extends CI_Controller {
 		}
 	}
 
+	/**
+	 * [join description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * assign players to the existing games
+	 * @return void
+	 */
   public function join(){
 		/* players, players_nick, scores, */
     $gameId = $this->input->post('gameId');
@@ -65,6 +77,12 @@ class Game extends CI_Controller {
 
   }
 
+	/**
+	 * [start description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * start the game
+	 * @return void
+	 */
   public function start(){
 		$gameId = $this->input->post('gameId');
     $utoken = $this->input->post('utoken');
@@ -81,6 +99,12 @@ class Game extends CI_Controller {
 		}
   }
 
+	/**
+	 * [play description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * fulfil the chance of the player
+	 * @return void
+	 */
   public function play(){
 		$gameId = $this->input->post('gameId');
     $utoken = $this->input->post('utoken');
@@ -119,6 +143,13 @@ class Game extends CI_Controller {
 		}
   }
 
+	/**
+	 * [gameStatus description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * check the status of the game
+	 * @param [array] $game
+	 * @return [array]
+	 */
 	private function gameStatus($game){
 		$count = array_diff($game['words'],$game['words_found']);
 		if(count($count)==0){
@@ -127,6 +158,14 @@ class Game extends CI_Controller {
 		return $game;
 	}
 
+	/**
+	 * [nextPlayer description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * switch the turns
+	 * @param {[array]} $game
+	 * @param {[string]} $utoken
+	 * @return {[array]} $game
+	 */
 	private function nextPlayer($game, $utoken){
 		$key = array_search ($utoken, $game['turn_seq']);
 		if(($key+1) == count($game['turn_seq'])){
@@ -137,6 +176,12 @@ class Game extends CI_Controller {
 		return $game;
 	}
 
+	/**
+	 * [info description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * provide information related to the game
+	 * @return void
+	 */
   public function info(){
 		$gameId = $this->input->post('gameId');
     $utoken = $this->input->post('utoken');
@@ -164,10 +209,21 @@ class Game extends CI_Controller {
 
   }
 
-  public function uuid(){
+	/**
+	 * [uuid description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * generates a unique identifier
+	 * @return [string]
+	 */
+  private function uuid(){
     return uniqid('');
   }
 
+	/**
+	 * [auth description]
+	 * partially authenticate the user and provide unique identifier
+	 * written by Ankit Vaishnav on 2016-10-13
+	 */
   public function auth(){
     if(empty($_COOKIE["utoken"])){
       $cookie_value = $this->uuid();
@@ -179,12 +235,19 @@ class Game extends CI_Controller {
     }
   }
 
-  public function setHeader($body, $http_code = null){
+	/**
+	 * [setHeader description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * prepares http request for all requests
+	 * @param [array] body
+	 * @param [int] http_code [optional]
+	 * @return void
+	 */
+  private function setHeader($body, $http_code = null){
     $output = json_encode($body);
 		if(empty($http_code)){
 			$http_code = 200;
 		}
-
     $this->output->set_header("Access-Control-Allow-Credentials: true");
     $this->output->set_header("Access-Control-Allow-Origin: *");
     $this->output->set_status_header($http_code);
@@ -196,7 +259,19 @@ class Game extends CI_Controller {
     exit;
   }
 
-  public function setRedis_create($gid, $utoken, $nick, $matrix, $words, $info){
+	/**
+	 * [setRedis_create description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * create a new game in redis
+	 * @param [string] gid
+	 * @param [string] utoken
+	 * @param [string] nick
+	 * @param [array] matrix
+	 * @param [array] words
+	 * @param [array] info
+	 * @return void
+	 */
+  private function setRedis_create($gid, $utoken, $nick, $matrix, $words, $info){
     $client = new Predis\Client([
       'scheme' => 'tcp',
       'host'   => '127.0.0.1',
@@ -210,7 +285,15 @@ class Game extends CI_Controller {
     $client->set($gid, $body);
   }
 
-	public function setRedis_set($gid, $object){
+	/**
+	 * [setRedis_set description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * set the game object to redis
+	 * @param [string] gid
+	 * @param [array] object
+	 * @return void
+	 */
+	private function setRedis_set($gid, $object){
     $client = new Predis\Client([
       'scheme' => 'tcp',
       'host'   => '127.0.0.1',
@@ -220,7 +303,14 @@ class Game extends CI_Controller {
     $client->set($gid, $object);
   }
 
-	public function setRedis_info($gid){
+	/**
+	 * [setRedis_info description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * get game object from redis
+	 * @param [string] $gid
+	 * @return [array]
+	 */
+	private function setRedis_info($gid){
     $client = new Predis\Client([
       'scheme' => 'tcp',
       'host'   => '127.0.0.1',
@@ -234,6 +324,12 @@ class Game extends CI_Controller {
 		}
   }
 
+	/**
+	 * [cheat description]
+	 * written by Ankit Vaishnav on 2016-10-13
+	 * generates the map of words and grid coordinated
+	 * @return [array]
+	 */
 	public function cheat(){
 		$gameId = $this->input->get('gameId');
 		$game = $this->setRedis_info($gameId);
