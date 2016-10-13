@@ -188,7 +188,7 @@ var common = {
                       <button class="btn btn-warning" onclick="window.common.pass()">Pass</button>\
                     </div>\
                     <div class="form-group">\
-                      <button class="btn btn-info" onclick="window.common.info()">Info</button>\
+                      <button class="btn btn-info" onclick="window.common.info()">Refresh </button>\
                     </div>\
                     <div class="col-md-12" id="info-bar">\
                     </div>\
