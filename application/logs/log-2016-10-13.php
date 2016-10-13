@@ -1544,3 +1544,78 @@ DEBUG - 2016-10-13 14:46:23 --> Total execution time: 0.0049
 DEBUG - 2016-10-13 14:46:33 --> UTF-8 Support Enabled
 DEBUG - 2016-10-13 14:46:33 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2016-10-13 14:46:33 --> Total execution time: 0.0111
+DEBUG - 2016-10-13 14:48:09 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:09 --> Total execution time: 0.0040
+DEBUG - 2016-10-13 14:48:10 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:10 --> Total execution time: 0.0050
+DEBUG - 2016-10-13 14:48:15 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:15 --> Total execution time: 0.0112
+DEBUG - 2016-10-13 14:48:19 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:19 --> Total execution time: 0.0050
+DEBUG - 2016-10-13 14:48:23 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:23 --> Total execution time: 0.0050
+DEBUG - 2016-10-13 14:48:27 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:27 --> Total execution time: 0.2672
+DEBUG - 2016-10-13 14:48:27 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:27 --> Total execution time: 0.0013
+DEBUG - 2016-10-13 14:48:30 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:30 --> Total execution time: 0.0046
+DEBUG - 2016-10-13 14:48:31 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:31 --> Total execution time: 0.0044
+DEBUG - 2016-10-13 14:48:31 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:31 --> Total execution time: 0.0045
+DEBUG - 2016-10-13 14:48:33 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:33 --> Total execution time: 0.0016
+DEBUG - 2016-10-13 14:48:35 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:35 --> Total execution time: 0.0018
+DEBUG - 2016-10-13 14:48:36 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:36 --> Total execution time: 0.0014
+DEBUG - 2016-10-13 14:48:47 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:47 --> Total execution time: 0.0111
+DEBUG - 2016-10-13 14:48:47 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:48:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:48:47 --> Total execution time: 0.0033
+DEBUG - 2016-10-13 14:49:04 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:05 --> Total execution time: 0.0052
+DEBUG - 2016-10-13 14:49:05 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:05 --> Total execution time: 0.0049
+DEBUG - 2016-10-13 14:49:05 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:05 --> Total execution time: 0.0020
+DEBUG - 2016-10-13 14:49:05 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:05 --> Total execution time: 0.0015
+DEBUG - 2016-10-13 14:49:05 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:05 --> Total execution time: 0.0047
+DEBUG - 2016-10-13 14:49:05 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:05 --> Total execution time: 0.0049
+DEBUG - 2016-10-13 14:49:05 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:06 --> Total execution time: 0.0047
+DEBUG - 2016-10-13 14:49:06 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:06 --> Total execution time: 0.0047
+DEBUG - 2016-10-13 14:49:06 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:06 --> Total execution time: 0.0014
+DEBUG - 2016-10-13 14:49:06 --> UTF-8 Support Enabled
+DEBUG - 2016-10-13 14:49:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-10-13 14:49:06 --> Total execution time: 0.0014

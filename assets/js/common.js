@@ -65,6 +65,9 @@ var common = {
         data: object,
         success: function(data,status,xhr){
           if(data && xhr.status==200){
+            if(data.msg){
+              common.showAlerts('warning', data.msg);
+            }
             common.gameId = gameId;
             common.info();
           }else{
