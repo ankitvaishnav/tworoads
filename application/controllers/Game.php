@@ -89,7 +89,7 @@ class Game extends CI_Controller {
 		$game = $this->setRedis_info($gameId);
 		if($game['admin']==$utoken){
 			if(count($game['players']) < 2){
-				$this->setHeader('Cannot start the game... min. 2 players needed!', 202);
+				$this->setHeader(['success'=>0, 'msg'=>'Cannot start the game... min. 2 players needed!'], 202);
 			}
 			$game['status'] = "inPlay";
 			$this->setRedis_set($gameId, $game);
